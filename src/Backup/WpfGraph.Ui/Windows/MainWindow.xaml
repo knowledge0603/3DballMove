@@ -1,0 +1,94 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lex="http://schemas.root-project.org/xaml/presentation"
+    xmlns:vm="clr-namespace:Palmmedia.WpfGraph.UI.ViewModels"
+    xmlns:res="clr-namespace:Palmmedia.WpfGraph.UI.Resources"
+    xmlns:vmMenu="clr-namespace:Palmmedia.WpfGraph.UI.ViewModels.Menu"
+    xmlns:views="clr-namespace:Palmmedia.WpfGraph.UI.Views"    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="Palmmedia.WpfGraph.UI.Windows.MainWindow"
+    Title="WpfGraph" Height="600" Width="800" mc:Ignorable="d" MinHeight="600" MinWidth="800" Icon="../ProgrammIcon.ico">
+
+    <Window.Resources>
+        <res:GraphElementTemplateSelector x:Key="GraphElementTemplateSelector"/>
+        <DataTemplate x:Key="NodeDataTemplate" >
+            <views:NodeDataView />
+        </DataTemplate>
+
+        <DataTemplate x:Key="EdgeDataTemplate">
+            <views:EdgeDataView />
+        </DataTemplate>
+        <ObjectDataProvider MethodName="GetMenuItems" ObjectType="{x:Type vmMenu:AlgorithmsMenuBuilder}" x:Key="AlgorithmMenuItems"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>  
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition/>
+    		<ColumnDefinition Width="180"/>
+    	</Grid.ColumnDefinitions>
+        
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="{lex:LocText Graph, Assembly=Palmmedia.WpfGraph.UI}">
+                <MenuItem Header="{lex:LocText Load, Assembly=Palmmedia.WpfGraph.UI}" Command="{Binding LoadGraphCommand, Mode=OneTime}"/>
+                <MenuItem Header="{lex:LocText Save, Assembly=Palmmedia.WpfGraph.UI}" Command="{Binding SaveGraphCommand, Mode=OneTime}"/>
+                <Separator/>
+                <MenuItem Header="{lex:LocText Exit, Assembly=Palmmedia.WpfGraph.UI}" Command="{Binding ExitCommand, Mode=OneTime}"/>
+            </MenuItem>
+            <MenuItem Header="{lex:LocText Algorithms, Assembly=Palmmedia.WpfGraph.UI}" ItemsSource="{Binding Source={StaticResource AlgorithmMenuItems}, Mode=OneTime}">
+                <MenuItem.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type vmMenu:MenuItemViewModel}" ItemsSource="{Binding ChildMenuItems, Mode=OneTime}">
+                        <MenuItem Header="{Binding Header, Mode=OneTime}" Command="{Binding Command, Mode=OneTime}"/>
+                    </HierarchicalDataTemplate>
+                </MenuItem.Resources>
+            </MenuItem>
+        </Menu>
+
+        <Canvas Grid.Column="0" Grid.Row="1"
+            Background="Transparent"
+            MouseDown="OnViewportMouseDown"/>
+        
+        <Viewport3D x:Name="viewport3D" Grid.Column="0" Grid.Row="1">
+
+            <Viewport3D.Camera>
+                <PerspectiveCamera 
+                    x:Name="camera" 
+                    Position="{Binding GraphViewModel.CameraPosition, Mode=OneWay}" 
+                    LookDirection="0,0,-100" 
+                    FieldOfView="90" />
+            </Viewport3D.Camera>
+
+            <ContainerUIElement3D x:Name="container"/>
+                
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <Model3DGroup>
+                        <DirectionalLight Color="White" Direction="-1,-1,-10"/>
+                        <DirectionalLight Color="White" Direction="-1,-1,10"/>
+                    </Model3DGroup>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+        </Viewport3D>
+        
+        <Rectangle Fill="#FF9D9D9D" Margin="4,0,-4,0" Grid.Column="1" Grid.Row="1" Stroke="Black"/>
+        <ListBox Grid.Column="1" Grid.Row="1" Margin="8,100,10,10" VerticalAlignment="Top" HorizontalContentAlignment="Stretch"
+         ItemsSource="{Binding GraphViewModel.SelectedElements, Mode=OneWay}"
+         SelectedItem="{Binding GraphViewModel.SelectedElement, Mode=OneWay}"
+         Background="{x:Null}" Foreground="{x:Null}" BorderBrush="{x:Null}"
+         ItemTemplateSelector="{Binding Source={StaticResource GraphElementTemplateSelector}}">
+            <ListBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF9D9D9D" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#FF9D9D9D" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+            </ListBox.Resources>
+        </ListBox>
+        <GroupBox Margin="10,10,10,0" VerticalAlignment="Top" Header="{lex:LocText Zoom, Assembly=Palmmedia.WpfGraph.UI}" Grid.Column="1" Grid.Row="1" Background="#FFB7B7B7">
+    		<Slider x:Name="slider" Margin="10" Maximum="300" Value="{Binding GraphViewModel.Zoom}" Minimum="15" d:LayoutOverrides="Height"/>
+    	</GroupBox>
+        <views:GraphImage Margin="0,0,0,30" Grid.Row="1" VerticalAlignment="Bottom" Height="52" Grid.Column="1" Width="56" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Palmmedia.WpfGraph.UI.Views.NodeDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lex="http://schemas.root-project.org/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="50" d:DesignWidth="16">
+    
+	<GroupBox Header="{lex:LocText Properties, Assembly=Palmmedia.WpfGraph.UI}" Background="#FFB7B7B7">
+		<StackPanel Margin="10">
+			<Label Content="{lex:LocText Color, Assembly=Palmmedia.WpfGraph.UI}"/>
+            <ComboBox Margin="0" TabIndex="1" 
+                      ItemsSource="{Binding Source={StaticResource AvailableColors}}"
+                      SelectedValue="{Binding Path=Data.Color}" ItemTemplate="{Binding Source={StaticResource ColorsTemplate}}">
+            </ComboBox>
+            <Label Content="{lex:LocText X, Assembly=Palmmedia.WpfGraph.UI}"/>
+        	<TextBox Text="{Binding Path=Data.XPosition, UpdateSourceTrigger=PropertyChanged}" Margin="0" VerticalAlignment="Top" TabIndex="1"/>
+			<Label Content="{lex:LocText Y, Assembly=Palmmedia.WpfGraph.UI}"/>
+        	<TextBox Text="{Binding Path=Data.YPosition, UpdateSourceTrigger=PropertyChanged}" Margin="0" VerticalAlignment="Top" TabIndex="2"/>
+			<Label Content="{lex:LocText Z, Assembly=Palmmedia.WpfGraph.UI}"/>
+        	<TextBox Text="{Binding Path=Data.ZPosition, UpdateSourceTrigger=PropertyChanged}" Margin="0" VerticalAlignment="Top" TabIndex="3"/>
+			<Label Content="{lex:LocText Text, Assembly=Palmmedia.WpfGraph.UI}"/>
+        	<TextBox Text="{Binding Path=Data.Text, UpdateSourceTrigger=PropertyChanged}" Margin="0" VerticalAlignment="Top" TabIndex="4"/>
+            <CheckBox IsChecked="{Binding Path=Data.Marked}" TabIndex="5" Content="{lex:LocText Marked, Assembly=Palmmedia.WpfGraph.UI}" Margin="0,8,0,0"></CheckBox>
+		</StackPanel>
+	</GroupBox>
+
+</UserControl>

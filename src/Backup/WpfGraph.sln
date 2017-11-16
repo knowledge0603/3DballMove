@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGraph.Core", "WpfGraph.Core\WpfGraph.Core.csproj", "{C2EC3248-C975-4619-80B4-9182CF3AE46E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGraph.CoreTest", "WpfGraph.CoreTest\WpfGraph.CoreTest.csproj", "{93FF90FD-27F4-4710-AA45-827677907F19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1277CD7B-47A8-4C7B-9570-27A288AF4158}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		WPFGraph.vsmdi = WPFGraph.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGraph.Ui", "WpfGraph.Ui\WpfGraph.Ui.csproj", "{1A44B85B-EA96-45C7-9057-C1E696EBFA71}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = WPFGraph.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2EC3248-C975-4619-80B4-9182CF3AE46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2EC3248-C975-4619-80B4-9182CF3AE46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2EC3248-C975-4619-80B4-9182CF3AE46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2EC3248-C975-4619-80B4-9182CF3AE46E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93FF90FD-27F4-4710-AA45-827677907F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FF90FD-27F4-4710-AA45-827677907F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FF90FD-27F4-4710-AA45-827677907F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FF90FD-27F4-4710-AA45-827677907F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A44B85B-EA96-45C7-9057-C1E696EBFA71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A44B85B-EA96-45C7-9057-C1E696EBFA71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A44B85B-EA96-45C7-9057-C1E696EBFA71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A44B85B-EA96-45C7-9057-C1E696EBFA71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

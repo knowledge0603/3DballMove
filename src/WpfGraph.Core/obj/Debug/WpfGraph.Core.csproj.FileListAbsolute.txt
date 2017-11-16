@@ -1,0 +1,4 @@
+F:\work\2017\20170616\WPFGraph\src\WpfGraph.Core\bin\Debug\Palmmedia.WpfGraph.Core.dll
+F:\work\2017\20170616\WPFGraph\src\WpfGraph.Core\bin\Debug\Palmmedia.WpfGraph.Core.pdb
+F:\work\2017\20170616\WPFGraph\src\WpfGraph.Core\obj\Debug\Palmmedia.WpfGraph.Core.dll
+F:\work\2017\20170616\WPFGraph\src\WpfGraph.Core\obj\Debug\Palmmedia.WpfGraph.Core.pdb

@@ -1,0 +1,1 @@
+F:\work\2017\20170616\WPFGraph\src\WpfGraph.CoreTest\obj\Debug\WpfGraph.CoreTest.csprojResolveAssemblyReference.cache

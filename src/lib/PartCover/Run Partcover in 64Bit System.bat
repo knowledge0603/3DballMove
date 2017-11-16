@@ -1,0 +1,1 @@
+"C:\Program Files\Microsoft SDKs\Windows\v6.0A\Bin\x64\CorFlags.exe" PartCover.exe /32BIT+ /Force
